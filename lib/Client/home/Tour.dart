@@ -1,7 +1,7 @@
 import 'package:codebooter_study_app/utils/Dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:carousel_slider/carousel_controller.dart' as carousel_slider;
 import 'package:go_router/go_router.dart';
 
 class CarouselScreen extends StatefulWidget {
@@ -19,7 +19,8 @@ class _CarouselScreenState extends State<CarouselScreen> {
   ];
 
   int currentIndex = 0;
-  final CarouselController _carouselController = CarouselController();
+  final carousel_slider.CarouselController _carouselController = 
+      carousel_slider.CarouselController();
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +96,31 @@ class _CarouselScreenState extends State<CarouselScreen> {
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            bottom: dimension.height50,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: imagePaths.map((url) {
+                int index = imagePaths.indexOf(url);
+                return Container(
+                  width: dimension.width10,
+                  height: dimension.height10,
+                  margin: EdgeInsets.symmetric(
+                    vertical: dimension.height10,
+                    horizontal: dimension.width5,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: currentIndex == index
+                        ? const Color.fromARGB(255, 0, 0, 0)
+                        : const Color.fromARGB(255, 200, 200, 200),
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],

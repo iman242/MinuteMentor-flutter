@@ -175,7 +175,7 @@ class _JobInternshipsState extends State<JobInternships> {
                                   child: ElevatedButton(
                                     onPressed: onTap,
                                     style: ElevatedButton.styleFrom(
-                                      primary: appState.isDarkMode
+                                      backgroundColor: appState.isDarkMode
                                           ? AppColors.primaryColor
                                           : AppColors.lightModePrimary,
                                       elevation: dimension.val5,
